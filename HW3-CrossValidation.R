@@ -54,7 +54,7 @@ cv.errors <- matrix(NA, k, 3)
 cv.errors
 
 # Calculate cv errors between training and testing data
-for(j in 1:k){
+for(j in 1:k){ 
   best.fit <- regsubsets(iq~., data = studIQ[folderIndex != j, ], nvmax = 3, method=c("exhaustive"))
   
   for(i in 1:3){
@@ -65,8 +65,8 @@ for(j in 1:k){
 }
 
 # Calculate the means of the MSE of the 3 candidates
-cv.errors
-colMeans(cv.errors) 
+cv.errors # Now each columns contains the 3 MSE for the specific model
+colMeans(cv.errors) # Calculate the average MSE of each candidate model across the 5 folds
 which.min(colMeans(cv.errors))
 
 # Calculate the coefficients of the 5 fold CV model
