@@ -55,7 +55,7 @@ cv.errors
 
 # Calculate cv errors between training and testing data
 for(j in 1:k){
-  best.fit <- regsubsets(iq~., data = studIQ[folderIndex != j, ], nvmax = 3)
+  best.fit <- regsubsets(iq~., data = studIQ[folderIndex != j, ], nvmax = 3, method=c("exhaustive"))
   
   for(i in 1:3){
     pred <- predict.regsubsets(best.fit, studIQ[folderIndex == j, ], id=i) ## get the predicted iq in the jth folder
